@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 public class Application {
 
+    //test comment
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
