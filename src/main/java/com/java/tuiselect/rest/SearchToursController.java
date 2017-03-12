@@ -20,10 +20,9 @@ import java.util.Arrays;
 @RestController
 public class SearchToursController {
 
-   private final String BASE_URL = "http://agent.tui.ua";
+   private final String BASE_URL = "http://vt-api.tui.ru:8965";
    private RestTemplate restTemplate;
    private HttpHeaders headers;
-
 
     @PostConstruct
     public void init(){
@@ -32,34 +31,36 @@ public class SearchToursController {
     }
 
     @RequestMapping("/api-agency/search/GetFacetsAndTours")
-    public ResponseEntity<String> getAllTours(
-        @RequestParam( value = "Country", required = false) String country,
-        @RequestParam("NightsFrom") String nightsFrom,
-        @RequestParam("NightsTo") String nightsTo,
-        @RequestParam("AdultCount") String adultCount,
-        @RequestParam(value = "ChildAges", required = false) String childAges,
-        @RequestParam("departureCity") String departureCity,
-        @RequestParam(value = "TourType", required = false) String tourType,
+    public ResponseEntity<String> getFacetsAndTours(
+        @RequestParam( value = "Country", required = false) Integer country,
+        @RequestParam(value = "NightsFrom", required = false) Integer nightsFrom,
+        @RequestParam(value = "NightsTo", required = false) Integer nightsTo,
+        @RequestParam(value = "AdultCount", required = false) Integer adultCount,
+        @RequestParam(value = "ChildAges", required = false) Integer childAges,
+        @RequestParam(value = "DepartureCity", required = false) Integer departureCity,
+        @RequestParam(value = "TourType", required = false) Integer tourType,
         @RequestParam(value = "DepartureDate",required = false) String departureDate,
-        @RequestParam(value = "Cities", required = false) String cities,
-        @RequestParam(value = "Districts", required = false) String districts,
-//        @RequestParam("Hotels") String hotels,
-//        @RequestParam("HotelCategories") String hotelCategories,
-//        @RequestParam("MealTypest") String mealTypes,
-//        @RequestParam("ExcursionTours") String excursionTours,
-//        @RequestParam("QuotaFlight") String quotaFlight,
-        @RequestParam("QuotaHotel") String quotaHotel,
+        @RequestParam(value = "Resorts",required = false) Integer resorts,
+        @RequestParam(value = "Cities", required = false) Integer cities,
+        @RequestParam(value = "Districts", required = false) Integer districts,
+        @RequestParam(value = "Hotels", required = false) Integer hotels,
+        @RequestParam(value = "HotelCategories", required = false) Integer hotelCategories,
+        @RequestParam(value = "MealTypest", required = false) Integer mealTypes,
+        @RequestParam(value = "ExcursionTours", required = false) Integer excursionTours,
+        @RequestParam(value = "QuotaFlight", required = false) String quotaFlight,
+        @RequestParam(value = "QuotaHotel", required = false) String quotaHotel,
         @RequestParam(value = "NQuotaFlight", required = false) String nQuotaFlight,
-        @RequestParam("Currency") String currency,
-        @RequestParam("GroupBy") String groupBy,
-        @RequestParam("SortBy") String sortBy,
-        @RequestParam("SortOrder") String sortOrder,
-        @RequestParam(value = "PriceLimit", required = false) String priceLimit) throws Exception {
+        @RequestParam(value = "Currency", required = false) String currency,
+        @RequestParam(value = "GroupBy", required = false) String groupBy,
+        @RequestParam(value = "SortBy", required = false) String sortBy,
+        @RequestParam(value = "SortOrder", required = false) String sortOrder,
+        @RequestParam(value = "Page", required = false) String page,
+        @RequestParam(value = "PriceLimit", required = false) Integer priceLimit) throws Exception {
 
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         URI uri = UriComponentsBuilder.fromHttpUrl(BASE_URL)
                 .path("api-agency/search/GetFacetsAndTours")
-                .queryParam("departureCity",departureCity)
+                .queryParam("DepartureCity",departureCity)
                 .queryParam("AdultCount",adultCount)
                 .queryParam("NightsFrom",nightsFrom)
                 .queryParam("NightsTo",nightsTo)
@@ -69,6 +70,68 @@ public class SearchToursController {
                 .queryParam("GroupBy",groupBy)
                 .queryParam("SortBy",sortBy)
                 .queryParam("SortOrder",sortOrder)
+                .queryParam("Country",country)
+                .queryParam("ChildAges",childAges)
+                .queryParam("TourType",  tourType)
+                .queryParam("DepartureDate",departureDate)
+                .queryParam("Resorts", resorts)
+                .queryParam("Cities", cities)
+                .queryParam("Districts", districts)
+                .queryParam( "Hotels", hotels)
+                .queryParam("HotelCategories", hotelCategories)
+                .queryParam("MealTypest", mealTypes)
+                .queryParam("ExcursionTours", excursionTours)
+                .queryParam("QuotaFlight", quotaFlight)
+                .queryParam("Page", page)
+                .queryParam("PriceLimit", priceLimit)
+                .build().encode().toUri();
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        ResponseEntity<String> response  = restTemplate.exchange(uri, HttpMethod.GET,  entity, String.class);
+        return response;
+    }
+
+    @RequestMapping("/api-agency/search/Get")
+    public ResponseEntity<String> getSearchFilters(
+            @RequestParam( value = "Country", required = false) Integer country,
+            @RequestParam(value = "NightsFrom", required = false) Integer nightsFrom,
+            @RequestParam(value = "NightsTo", required = false) Integer nightsTo,
+            @RequestParam(value = "AdultCount", required = false) Integer adultCount,
+            @RequestParam(value = "ChildAges", required = false) Integer childAges,
+            @RequestParam(value = "DepartureCity", required = false) Integer departureCity,
+            @RequestParam(value = "TourType", required = false) Integer tourType,
+            @RequestParam(value = "DepartureDate",required = false) String departureDate,
+            @RequestParam(value = "Resorts",required = false) Integer resorts,
+            @RequestParam(value = "Cities", required = false) Integer cities,
+            @RequestParam(value = "Districts", required = false) Integer districts,
+            @RequestParam(value = "Hotels", required = false) Integer hotels,
+            @RequestParam(value = "HotelCategories", required = false) Integer hotelCategories,
+            @RequestParam(value = "MealTypes", required = false) Integer mealTypes,
+            @RequestParam(value = "ExcursionTours", required = false) Integer excursionTours,
+            @RequestParam(value = "QuotaFlight", required = false) String quotaFlight,
+            @RequestParam(value = "QuotaHotel", required = false) String quotaHotel,
+            @RequestParam(value = "PriceLimit", required = false) Integer priceLimit) throws Exception {
+
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        URI uri = UriComponentsBuilder.fromHttpUrl(BASE_URL)
+                .path("api-agency/search/Get")
+                .queryParam("DepartureCity",departureCity)
+                .queryParam("AdultCount",adultCount)
+                .queryParam("NightsFrom",nightsFrom)
+                .queryParam("NightsTo",nightsTo)
+                .queryParam("QuotaHotel",quotaHotel)
+                .queryParam("Country",country)
+                .queryParam("ChildAges",childAges)
+                .queryParam("TourType",  tourType)
+                .queryParam("DepartureDate",departureDate)
+                .queryParam("Resorts", resorts)
+                .queryParam("Cities", cities)
+                .queryParam("Districts", districts)
+                .queryParam( "Hotels", hotels)
+                .queryParam("HotelCategories", hotelCategories)
+                .queryParam("MealTypest", mealTypes)
+                .queryParam("ExcursionTours", excursionTours)
+                .queryParam("QuotaFlight", quotaFlight)
+                .queryParam("PriceLimit", priceLimit)
                 .build().encode().toUri();
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<String> response  = restTemplate.exchange(uri, HttpMethod.GET,  entity, String.class);
