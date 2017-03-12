@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="com.tui.tuiselect_main" target="1.8" />
       <module name="com.tui.tuiselect_test" target="1.8" />
+      <module name="tuiselect_main" target="1.8" />
+      <module name="tuiselect_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,7 @@
+#Base path to jersey controller endpoint
+spring:
+  output:
+        ansi:
+          enabled: always
+  profiles:
+    active: dev

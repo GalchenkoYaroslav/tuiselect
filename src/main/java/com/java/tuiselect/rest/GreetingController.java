@@ -18,7 +18,7 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
+
     public Map<String,String> greeting(@RequestParam(value="name", defaultValue="World") String name) {
         Map<String, String> map = new HashMap<String,String>();
         map.put("one", "two");
