@@ -1,0 +1,8 @@
+#top-carousel>.carousel-inner > .item > img,
+#top-carousel>.carousel-inner > .item > a > img {
+  max-height: 400px;    /* Set slide height here */
+}
+#slider1>.carousel-inner > .item > img,
+#slider1>.carousel-inner > .item > a > img {
+  max-height: 400px;    /* Set slide height here */
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="search1app">
+<head>
+		<meta charset="UTF-8">
+		<title>Search</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="table.css">
+	</head>
+<body>
+
+
+	<div class="container" ng-controller="search1Controller as s1ctrl">
+		<div class="section">
+			<div>
+				<p>id: {{s1ctrl.cityid}} </p>
+		<!--correct:{{s1ctrl.idCorrect("170021")}}-->
+				<p ng-hide="s1ctrl.hardRequestAttempt">Please wait</p>
+				<p ng-show="s1ctrl.showError()">Error</p>
+				<div ng-show="s1ctrl.showSuccess()">
+				<p>Success</p>
+				<p>TotalOffers:{{s1ctrl.result.SearchResult.TotalOffers}}</p>
+				<p>TotalItems:{{s1ctrl.result.SearchResult.TotalItems}}</p>
+				<!--<p>Shown: 100 (if available)</p>-->
+				</div></div></div>
+
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<form action="">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<label for="depart1">From:</label>
+									<select name="depart1" id="depart1" class="selectpicker form-control input-toggle" data-live-search="true" ng-model="fromData.model">
+										<!--ng-options="city.Text for city in t1ctrl.initialData.SearchFilter.Filters.DepartureCity.FilterItems"-->
+										<!--<option value="1">1 One</option>-->
+										<!--<option value="2">2 Two</option>-->
+										<!--<div ng-repeat="city in t1ctrl.initialData.SearchFilter.Filters.DepartureCity.FilterItems">-->
+										<!--<option value="{{city.Id}}">{{city.Text}}</option>-->
+										<option ng-repeat="city in fromData.availableOptions" value="{{city.Id}}">{{city.Text}}</option>
+										<!--</div>-->
+									</select>
+								</div>
+								<div class="row">
+									<a data-toggle="collapse" class="white-expand-link" href="#country-expand"><b class="caret bigger15"></b>Country</a>
+									<div id="country-expand" class="panel-collapse collapse">
+										<div class="col-md-12 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="dest1">To:</label>
+											<select name="dest1" id="dest1" class="selectpicker form-control input-toggle"  data-live-search="true" ng-model="toData.model">
+												<!--<option value="1">1 One</option>-->
+												<!--<option value="2">2 Two</option>-->
+												<option ng-repeat="country in toData.availableOptions" value="{{country.Id}}">{{country.Text}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<button type="button" class="btn btn-default form-control">Button</button>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-8 col-sm-8 col-xs-12">
+						<h1>Listing Eaample with smart-table and AngularJS</h1>
+						<div ng-show="loading"><h3>Loading...</h3></div>
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>Город</th>
+								<th width="100px">Страна</th>
+								<th>Цена</th>
+								<th>Категория</th>
+							</tr>
+							</thead>
+							<tbody>
+
+
+							<tr st-select-row="row" st-select-mode="multiple" ng-repeat="tour in s1ctrl.forOutput">
+								<td>{{tour.CityName}}</td>
+								<td>{{tour.CountryName}}</td>
+								<td>{{tour.Price}}</td>
+								<td>{{tour.HotelCategoryName}}</td>
+							</tr>
+							</tbody>
+							<tfoot>
+
+							</tfoot>
+						</table>
+					</div>
+
+				</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container">-->
+	<!--<div class="section">-->
+	<!--<div ng-controller="search1Controller as s1ctrl">-->
+		<!--id: {{s1ctrl.cityid}}-->
+		<!--&lt;!&ndash;correct:{{s1ctrl.idCorrect("170021")}}&ndash;&gt;-->
+		<!--<p ng-hide="s1ctrl.hardRequestAttempt">Please wait</p>-->
+		<!--<p ng-show="s1ctrl.showError()">Error</p>-->
+		<!--<div ng-show="s1ctrl.showSuccess()">-->
+			<!--<p>Success</p>-->
+			<!--<p>TotalOffers:{{s1ctrl.result.SearchResult.TotalOffers}}</p>-->
+			<!--<p>TotalItems:{{s1ctrl.result.SearchResult.TotalItems}}</p>-->
+			<!--&lt;!&ndash;<p>Shown: 100 (if available)</p>&ndash;&gt;-->
+
+			<!--<div class="row">-->
+			<!--<div ng-repeat="tour in s1ctrl.forOutput">-->
+				<!--<p>Tour</p>-->
+				<!--<p>DepartureDate:{{tour.DepartureDate}}</p>-->
+				<!--<p>ArrivalDate:{{tour.ArrivalDate}}</p>-->
+				<!--<p>DepartureCityName:{{tour.DepartureCityName}}</p>-->
+				<!--<p>CityName:{{tour.CityName}}</p>-->
+				<!--<p>CountryName:{{tour.CountryName}}</p>-->
+				<!--<p>TourName:{{tour.TourName}}</p>-->
+				<!--<p>Tour Price: {{tour.Price}}</p>-->
+			<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.8/smart-table.min.js"></script>
+	<script src="js/search1app.js"></script>
+	<script src="js/controllers/search1Controller.js"></script>
+
+</body>
+</html>

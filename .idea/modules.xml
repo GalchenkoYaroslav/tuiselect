@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tuiselect.iml" filepath="$PROJECT_DIR$/.idea/modules/tuiselect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tuiselect.iml" filepath="$PROJECT_DIR$/.idea/modules/tuiselect.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tuiselect_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tuiselect_main.iml" group="tuiselect" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tuiselect_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tuiselect_main.iml" group="tuiselect" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tuiselect_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tuiselect_test.iml" group="tuiselect" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tuiselect_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tuiselect_test.iml" group="tuiselect" />
     </modules>
   </component>

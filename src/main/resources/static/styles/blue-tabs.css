@@ -1,0 +1,36 @@
+.tab-content {
+  color : white;
+  background-color: #337ab7;
+  padding : 5px 15px;
+}
+.nav-pills > li > a {
+  border-radius: 0;
+}
+.margin-bot-5{
+	margin-bottom: 5px;
+}
+.white-back{
+	background-color: white;
+}
+.margin-top-5{
+	margin-top: 5px;
+}
+.button-text-style{
+	color: black;
+	font-weight: bold;
+}
+.white-expand-link{
+	color: white !important;
+    text-decoration: underline !important;
+	font-size: 1.5em !important;
+
+}
+.white-expand-link:hover{
+	font-weight: bold !important;
+	color: white !important;
+    text-decoration: underline !important;
+	font-size: 1.2em !important;
+}
+.bigger15{
+	font-size: 1.5em !important;
+}

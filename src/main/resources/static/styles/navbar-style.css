@@ -1,0 +1,6 @@
+.navbar-blue{
+	background-color: lightblue;
+}
+.navbar-blue .nav.navbar-nav>li>a{
+	color:#444;
+}

@@ -1,0 +1,36 @@
+div.grid-pad{
+	padding: 5px;
+}
+div.grid-pad img{
+	width: 100%;
+}
+div.big-pad{
+	padding: 10%;
+}
+div.blue-content{
+	padding: 10px;
+	color: blue;
+	border-bottom: 5px solid blue;
+	border-top: 5px solid blue;
+	margin: 10px 0;
+}
+div.footer{
+	background-color: lightblue;
+	margin-top: 25px;
+	min-height: 25px;
+}
+div.phone{
+	margin-top:10px;
+	margin-bottom:10px;
+	background-color: blue;
+	font-size: 2em;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 2;
+	
+}
+span.glyphicon-earphone {
+    font-size: 0.75em;
+    vertical-align: -10%
+}

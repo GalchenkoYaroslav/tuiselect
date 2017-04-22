@@ -1,7 +1,5 @@
-#Base path to jersey controller endpoint
-spring:
-  output:
-        ansi:
-          enabled: always
-  profiles:
-    active: dev
+#spring:
+#  devtools:
+#    restart:
+#      poll-interval: 1500
+#      quiet-period: 1000

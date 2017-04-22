@@ -1,0 +1,568 @@
+<!doctype html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>TUI proto</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">-->
+		<!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.css" />-->
+		<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css" />
+		<link rel="stylesheet" href="styles/bs3-fix.css"> 
+		<link rel="stylesheet" href="styles/for-sliders.css">		
+		<link rel="stylesheet" href="styles/navbar-style.css"> 
+		<link rel="stylesheet" href="styles/dropdown-hover-fix.css">
+		<link rel="stylesheet" href="styles/blue-tabs.css">
+		<link rel="stylesheet" href="styles/individual-styles/index.css">
+		<link rel="stylesheet" href="styles/individual-styles/slider-styles/index.css"> 
+		<!-- <link rel="stylesheet" href="index.css">  -->
+	</head>
+	<body>
+		<div class="navbar navbar-default navbar-blue">
+			<div class="container">
+				
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#responsive-menu">
+							<span class="sr-only">Навигация</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="" class="navbar-brand">Logo</a>
+					</div>
+					<div class="navbar-collapse collapse" id="responsive-menu">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Поиск и заказ<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-submenu">
+										<a href="#">Популярные направления</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Египет</a></li>
+											<li><a href="#">Турция</a></li>
+											<li><a href="#">Эмираты</a></li>
+											<li><a href="#">Шри-Ланка</a></li>
+											<li><a href="#">Таиланд</a></li>
+											<li><a href="#">Австрия</a></li>
+											<li><a href="#">Андорра</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu">
+										<a href="#">Акционные предложения</a>
+										<ul class="dropdown-menu">
+											<li><a href="http://www.tui.ua/actions/">Акции</a></li>
+											<li><a href="http://www.tui.ua/allhottours/">Горящие туры</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu">
+										<a href="#">Идеи Вашего отдиха</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Пляжные туры</a></li>
+											<li><a href="#">Горнолыжный отдых</a></li>
+											<li><a href="#">Экскурсионные туры</a></li>
+											<li><a href="#">Индивидуальные туры</a></li>
+											<li><a href="#">Круизы</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu">
+										<a href="#">Дополнительно</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Авиабилеты</a></li>
+											<li><a href="#">Прокат авто</a></li>
+											<li><a href="#">Визы</a></li>
+											<li><a href="#">Корпоративный туризм</a></li>
+										</ul>
+									</li>									
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Клубные концепции<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="http://agent.tui.ua/Concepts/CLUB-MAGIC-LIFE/">Club magic life</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Страны</a></li>
+							<li class="dropdown">
+								<a href="#"  class="dropdown-toggle" data-toggle="dropdown">Натхнення<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Спа</a></li>
+									<li><a href="#">Выгодное предложение</a></li>
+									<li><a href="#">Семейный отдых</a></li>
+									<li><a href="#">Только для взрослых</a></li>
+									<li><a href="#">Молодежный отдых</a></li>
+									<li><a href="#">Спокойный отдых</a></li>									
+								</ul>
+							</li>
+							<li><a href="#">Преимущества</a></li>
+						</ul>
+					</div>
+				
+			</div>
+				
+		</div> 
+
+
+		<!-- <top-menu></top-menu> -->
+
+
+		<!-- <div ng-include="templates/top-menu.html"></div> -->
+
+
+
+
+		<div id="top-carousel-placeholder">
+			
+		</div>
+
+
+
+
+		<div class="container">	
+			<br>
+			<div class="blue-tabs">
+				<ul class="nav nav-pills">
+					<li class="active"><a href="#tab1" data-toggle="tab">Tab 1</a></li>
+					<li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab1" ng-controller="tab1Controller as t1ctrl">
+						<form action="">
+							<div class="row">
+								<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+									<label for="depart1">From:</label>
+									<select name="depart1" id="depart1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="fromData.model"  ng-change="t1ctrl.updateForm()">
+										<!--ng-options="city.Text for city in t1ctrl.initialData.SearchFilter.Filters.DepartureCity.FilterItems"-->
+										<!--<option value="1">1 One</option>-->
+										<!--<option value="2">2 Two</option>-->
+										<!--<div ng-repeat="city in t1ctrl.initialData.SearchFilter.Filters.DepartureCity.FilterItems">-->
+											<!--<option value="{{city.Id}}">{{city.Text}}</option>-->
+											<option ng-repeat="city in fromData.availableOptions" value="{{city.Id}}">{{city.Text}}</option>
+										<!--</div>-->
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+									<label for="type1">Tour type:</label>
+									<select name="type1" id="type1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="typeData.model"  ng-change="t1ctrl.updateForm()">
+										<!--ng-options="city.Text for city in t1ctrl.initialData.SearchFilter.Filters.DepartureCity.FilterItems"-->
+										<!--<option value="1">1 One</option>-->
+										<!--<option value="2">2 Two</option>-->
+										<!--<div ng-repeat="city in t1ctrl.initialData.SearchFilter.Filters.DepartureCity.FilterItems">-->
+										<!--<option value="{{city.Id}}">{{city.Text}}</option>-->
+										<option ng-repeat="type in typeData.availableOptions" value="{{type.Id}}">{{type.Text}}</option>
+										<!--</div>-->
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+									<label for="dest1">To:</label>
+									<select name="dest1" id="dest1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="toData.model" ng-change="t1ctrl.updateForm()">
+										<!--<option value="1">1 One</option>-->
+										<!--<option value="2">2 Two</option>-->
+										<option ng-repeat="country in toData.availableOptions" value="{{country.Id}}">{{country.Text}}</option>
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+									<label for="resort1">Resort:</label>
+									<select name="resort1" id="resort1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="resortData.model" ng-change="t1ctrl.updateForm()">
+										<!--<option value="1">1 One</option>-->
+										<!--<option value="2">2 Two</option>-->
+										<option ng-repeat="resort in resortData.availableOptions" value="{{resort.Id}}">{{resort.Text}}</option>
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+									<label for="date1">Date:</label>
+									<!--<div class="row">-->
+										<!--<div class="col-md-10 col-sm-10 col-xs-10">-->
+											<!--<input type="text" name="date" id="date1" readonly class="form-control" value="" />-->
+										<!--</div>-->
+										<!--<div class="col-md-2 col-sm-2 col-xs-2">-->
+											<!--<button type="button" class="btn btn-danger form-control" ng-click="t1ctrl.date1clear()">X</button>-->
+										<!--</div>-->
+									<!--</div>-->
+									<div class="input-group">
+										<input type="text" name="date" id="date1" readonly class="form-control input-toggle" disabled value="" ng-model="date1model" ng-change="t1ctrl.updateForm()" />
+										<span class = "input-group-btn">
+											<button type="button" class="btn btn-danger form-control input-toggle" disabled ng-click="t1ctrl.date1clear()">X</button>
+										</span>
+									</div>
+
+
+
+									<!--<input type="text" name="daterange" id="daterange1" class="form-control" value="01/01/2015 - 01/31/2020" />-->
+								</div>
+								<div class="col-md-3 col-sm-12 col-xs-12 margin-bot-5">
+									<label for="nights-slide">Nights:</label>
+									<div><input class="slide-input-toggle" id="nights-slide" type="text" value="" data-slider-min="1" data-slider-max="21" data-slider-step="1" data-slider-value="[1,21]"/></div>
+
+								</div>
+								<div class="col-md-3 col-sm-12 col-xs-12 margin-bot-5">
+									<label for="adult-slide">Adults:</label>
+									<div><input class="slide-input-toggle" id="adult-slide" type="text" value="" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="1"/></div>
+
+								</div>
+							</div>
+							<div class="row">
+								<a data-toggle="collapse" class="white-expand-link" href="#children-expand"><b class="caret bigger15"></b>Children</a>
+								<div id="children-expand" class="panel-collapse collapse">
+									<!--<div class="row">-->
+										<div class="col-md-3 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="children-slide">Children:</label>
+											<div><input class="slide-input-toggle" id="children-slide" type="text" value="" data-slider-min="0" data-slider-max="3" data-slider-step="1" data-slider-value="0"/></div>
+
+										</div>
+										<div class="col-md-3 col-sm-12 col-xs-12 margin-bot-5 hide" id="child1block">
+											<label for="child1age">Child 1 age:</label>
+											<div><input class="slide-input-toggle" id="child1age" type="text" value="" data-slider-min="2" data-slider-max="18" data-slider-step="1" data-slider-value="2"/></div>
+
+										</div>
+										<div class="col-md-3 col-sm-12 col-xs-12 margin-bot-5 hide" id="child2block">
+											<label for="child2age">Child 2 age:</label>
+											<div><input class="slide-input-toggle" id="child2age" type="text" value="" data-slider-min="2" data-slider-max="18" data-slider-step="1" data-slider-value="2"/></div>
+
+										</div>
+										<div class="col-md-3 col-sm-12 col-xs-12 margin-bot-5 hide" id="child3block">
+											<label for="child3age">Child 3 age:</label>
+											<div><input class="slide-input-toggle" id="child3age" type="text" value="" data-slider-min="2" data-slider-max="18" data-slider-step="1" data-slider-value="2"/></div>
+
+										</div>
+
+
+
+										<!--<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">-->
+										<!--<label for="who1">Who:</label>-->
+										<!--<select name="who1" id="who1" class="selectpicker form-control" multiple title="Choose something">-->
+										<!--<optgroup label="Adults" data-max-options="1" data-max-options-text="only one!">-->
+										<!--<option value="1adult">1 Adult</option>-->
+										<!--<option value="2adult">2 Adults</option>-->
+										<!--<option value="3adult">3 Adults</option>-->
+										<!--</optgroup>-->
+										<!--<optgroup label="Children" data-max-options="1" data-max-options-text="1">-->
+										<!--<option value="1child">1 Child</option>-->
+										<!--<option value="2child">2 Children</option>-->
+										<!--<option value="3child">3 Children</option>-->
+										<!--</optgroup>-->
+										<!--</select>-->
+										<!--</div>-->
+										<!--<div class='col-md-5'>-->
+										<!--<div class="form-group">-->
+										<!--<div class='input-group date' id='datetimepicker6'>-->
+										<!--<input type='text' class="form-control" />-->
+										<!--<span class="input-group-addon">-->
+										<!--<span class="glyphicon glyphicon-calendar"></span>-->
+										<!--</span>-->
+										<!--</div>-->
+										<!--</div>-->
+										<!--</div>-->
+										<!--<div class='col-md-5'>-->
+										<!--<div class="form-group">-->
+										<!--<div class='input-group date' id='datetimepicker7'>-->
+										<!--<input type='text' class="form-control" />-->
+										<!--<span class="input-group-addon">-->
+										<!--<span class="glyphicon glyphicon-calendar"></span>-->
+										<!--</span>-->
+										<!--</div>-->
+										<!--</div>-->
+										<!--</div>-->
+										<!--{{t1ctrl.initialData}}-->
+									<!--</div>-->
+								</div>
+							</div>
+
+							<div class="row">
+								<a data-toggle="collapse" class="white-expand-link" href="#tab1expand"><b class="caret bigger15"></b>Expand</a>
+								<div id="tab1expand" class="panel-collapse collapse">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto dolorem itaque natus necessitatibus sapiente soluta? Alias asperiores cupiditate dolor facilis id ipsam natus nulla quibusdam saepe sint, tempora voluptatum!</p>
+									<!--<div class="row">-->
+										<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="city1">City:</label>
+											<select name="city1" id="city1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="cityData.model" ng-change="t1ctrl.updateForm()">
+												<!--<option value="1">1 One</option>-->
+												<!--<option value="2">2 Two</option>-->
+												<option ng-repeat="city in cityData.availableOptions" value="{{city.Id}}">{{city.Text}}</option>
+											</select>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="hcat1">Hotel Category:</label>
+											<select name="hcat1" id="hcat1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="hcatData.model" ng-change="t1ctrl.updateForm()">
+												<!--<option value="1">1 One</option>-->
+												<!--<option value="2">2 Two</option>-->
+												<option ng-repeat="cat in hcatData.availableOptions" value="{{cat.Id}}">{{cat.Text}}</option>
+											</select>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="district1">District:</label>
+											<select name="district1" id="district1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="districtData.model" ng-change="t1ctrl.updateForm()">
+												<!--<option value="1">1 One</option>-->
+												<!--<option value="2">2 Two</option>-->
+												<option ng-repeat="district in districtData.availableOptions" value="{{district.Id}}">{{district.Text}}</option>
+											</select>
+										</div>
+
+										<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="meal1">Meal Types:</label>
+											<select name="meal1" id="meal1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="mealData.model" ng-change="t1ctrl.updateForm()">
+												<!--<option value="1">1 One</option>-->
+												<!--<option value="2">2 Two</option>-->
+												<option ng-repeat="meal in mealData.availableOptions" value="{{meal.Id}}">{{meal.Text}}</option>
+											</select>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="hotel1">Hotel:</label>
+											<select name="hotel1" id="hotel1" class="selectpicker form-control input-toggle" disabled data-live-search="true" ng-model="hotelData.model" ng-change="t1ctrl.updateForm()">
+												<!--<option value="1">1 One</option>-->
+												<!--<option value="2">2 Two</option>-->
+												<option ng-repeat="hotel in hotelData.availableOptions" value="{{hotel.Id}}">{{hotel.Text}}</option>
+											</select>
+										</div>
+										<div class="col-md-6 col-sm-12 col-xs-12 margin-bot-5">
+											<label for="price1">Price Limit:</label>
+											<!--<select name="hotel1" id="hotel1" class="selectpicker form-control" data-live-search="true" ng-model="hotelData.model" ng-change="t1ctrl.updateForm()">-->
+											<!--&lt;!&ndash;<option value="1">1 One</option>&ndash;&gt;-->
+											<!--&lt;!&ndash;<option value="2">2 Two</option>&ndash;&gt;-->
+											<!--<option ng-repeat="hotel in hotelData.availableOptions" value="{{hotel.Id}}">{{hotel.Text}}</option>-->
+											<!--</select>-->
+											<input type="text" ng-model="price1model" numbers-only class="form-control input-toggle" disabled id="price1" maxlength="10">
+											<!--<input type="text" name="price1ng" id="price1ng" value="" ng-change="t1ctrl.price1ng()" ng-model="price1ngmodel">-->
+										</div>
+									<!--</div>-->
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12 margin-bot-5 margin-top-5">
+									<button type="button" class="btn btn-block btn-warning button-text-style input-toggle" disabled ng-click ="t1ctrl.gotoSearch()">{{t1ctrl.buttonText}}</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane" id="tab2">
+						<p>Tab2</p>
+					</div>
+				</div>
+			</div>	
+			
+		</div>
+		
+
+
+
+		
+
+
+
+
+		<!-- <div id="top-carousel" class="carousel slide" data-ride="carousel">
+			<div ng-controller="TopSliderController as topSlider" ng-repeat="slide in topSlider.slides">
+				<ol class="carousel-indicators">
+					<li data-target="#top-carousel" data-slide-to="{{$index}}"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item">
+						<a href="" ng-href="{{slide.href}}" ng-show="{{slide.hasOwnPropety('href')}}">
+							<img alt="{{slide.alt}}" ng-src="{{slide.src}}">
+						</a>
+						<img alt="{{slide.alt}}" ng-src="{{slide.src}}" ng-hide="{{slide.hasOwnPropety('href')}}">
+						<div class="carousel-caption" ng-show="{{slide.hasOwnPropety('captionH3')||slide.hasOwnPropety('captionP')}}">
+							<h3>{{slide.captionH3}}</h3>
+							<p>{{slide.captionP}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="left carousel-control" href="#top-carousel" data-slide="prev">
+    			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    			<span class="sr-only">Previous</span>
+  			</a>
+  			<a class="right carousel-control" href="#top-carousel" data-slide="next">
+    			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    			<span class="sr-only">Next</span>
+  			</a>
+		</div> -->
+		
+
+		
+		<div class="container">
+			<h3>Header</h3>
+			<div class="row">
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="grid-pad"><img src="img/hotel.jpg" alt=""></div>
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="grid-pad"><img src="img/summer.jpg" alt=""></div>
+				</div>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="grid-pad"><img src="img/panorama.jpg" alt=""></div>
+				</div>
+			</div>
+
+			<h3>Header</h3>
+			<div id="slider1-placeholder">
+				
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 div-sm-12 div-xs-12">
+					<div class="grid-pad"><img src="img/hotel.jpg" alt="img/hotel.jpg"></div>
+				</div>
+				<div class="col-md-6 div-sm-12 div-xs-12">
+					<div class="grid-pad"><img src="img/summer.jpg" alt=""></div>
+				</div>
+			</div>
+
+			<h3>Header</h3>
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="grid-pad"><img src="img/hotel.jpg" alt=""></div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="grid-pad"><img src="img/summer.jpg" alt=""></div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="grid-pad"><img src="img/egypt.jpg" alt=""></div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="grid-pad"><img src="img/egypt.jpg" alt=""></div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="grid-pad"><img src="img/summer.jpg" alt=""></div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="grid-pad"><img src="img/hotel.jpg" alt=""></div>
+				</div>
+			</div>
+
+
+			<h3>Header</h3>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="grid-pad"><img src="img/egypt.jpg" alt=""></div>
+				</div>
+			</div>
+
+
+			<!--<div class="blue-content">-->
+				<!--<div class="row">-->
+					<!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+						<!--<div class="big-pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</div>-->
+					<!--</div>-->
+					<!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+						<!--<div class="big-pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</div>-->
+					<!--</div>-->
+					<!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+						<!--<div class="big-pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</div>-->
+					<!--</div>-->
+					<!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+						<!--<div class="big-pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</div>-->
+					<!--</div>-->
+					<!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+						<!--<div class="big-pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</div>-->
+					<!--</div>-->
+					<!--<div class="col-md-4 col-sm-6 col-xs-12">-->
+						<!--<div class="big-pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+
+
+
+
+			<ng-include src="'incl.html'"></ng-include>
+
+
+
+
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="big-pad">
+						<h4>Header</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="big-pad">
+						<h4>Header</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="big-pad">
+						<h4>Header</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</p>
+					</div>
+				</div>
+			</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</p>
+
+			
+		</div>
+
+
+
+		<div class="phone"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>: 555-35-35</div>
+
+
+
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="big-pad">
+						<h4>Header</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="big-pad">
+						<h4>Header</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="big-pad">
+						<h4>Header</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sed quis non? Iusto, nulla! Nam rerum provident fugiat at, quia expedita voluptas minus alias facilis, blanditiis accusantium neque voluptatibus, tempora!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="footer"></div>
+
+
+		
+
+
+
+
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>-->
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment-with-locales.min.js"></script>-->
+		<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.js"></script>-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+		<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>-->
+		<script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<!--<script src="js/date1datepicker.js"></script>-->
+		<!-- <script src="js/myApp.js"></script>
+		<script src="js/controllers/TopSliderController.js"></script>
+		<script src="js/sliderInitFix.js"></script> -->
+		<!-- <script src="js/menuHover.js"></script> -->
+		<script src="js/sliderInitializator.js"></script>
+		<script src="js/sliderInitializators/topCarousel.js"></script>
+		<script src="js/sliderInitializators/slider1.js"></script>
+		<script src="js/price1fix.js"></script>
+		<script src="js/myApp.js"></script>
+        <script src="js/numbersOnlyDirective.js"></script>
+		<script src="js/controllers/tab1Controller.js"></script>
+		<!--<script src="js/controllers/TopSliderController.js"></script>-->
+		<script src="js/datepickermain.js"></script>
+		<!--<script src="js/jsonget.js"></script>-->
+		<!-- <script src="js/templates/top-menu.html"></script> -->
+
+		
+	</body>
+</html>
